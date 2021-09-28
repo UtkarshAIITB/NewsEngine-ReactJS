@@ -2,7 +2,7 @@
 
 This is a web application that uses publicly available data about Covid-19 and NewsAPI to display News in a presentable manner.
 
-#How to Use
+# How to Use
 
 1. Run 'npm start'
 2. Go to the localhost 
@@ -39,6 +39,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-#Technlogies Used
+# Technlogies Used
 1. React
 2. Bootstrap
