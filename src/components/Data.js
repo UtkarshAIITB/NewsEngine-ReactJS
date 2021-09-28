@@ -65,7 +65,7 @@ const Data = () =>{
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'row'
-        }}>
+        }}> 
             
                 
                     {/* {regional.map((element) =>{
@@ -88,7 +88,7 @@ const Data = () =>{
                 })} */}
         <Router>
           <Switch>
-                          <Route exact path="/"><Dropdown key="general" category="general" name="Choose State" data={""} ></Dropdown> </Route>
+                          <Route exact path="/coviddashboard"><Dropdown key="general" category="general" name="Choose State" data={""} deaths ={summary.deaths} cases={summary.total} discharged={summary.discharged} ></Dropdown> </Route>
                             <Route exact path="/andamanandnicobarislands"> <Dropdown key="andamanandnicobarislands" category="andamanandnicobarislands" name="Andaman and Nicobar Islands" 
                              data = {regional[0]}/> </Route>
                             <Route exact path="/andhrapradesh"><Dropdown key="andhrapradesh" category="andhrapradesh" name="Andhra Pradesh" data = {regional[1]} >

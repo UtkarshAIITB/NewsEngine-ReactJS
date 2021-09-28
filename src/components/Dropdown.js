@@ -4,6 +4,28 @@ import {
 } from "react-router-dom";
 
 const Dropdown = (props)=> {
+
+    const case_valid = () =>{
+        if (String(props.data?.confirmedCasesIndian) === 'undefined'){
+            return "Select State";
+        }
+        return String(props.data?.confirmedCasesIndian) ;
+    }
+
+    const activecase_valid = () =>{
+        if (String(props.data?.confirmedCasesIndian - props.data?.deaths - props.data?.discharged) === 'NaN'){
+            return "Select State";
+        }
+        return String(props.data?.confirmedCasesIndian - props.data?.deaths - props.data?.discharged);
+    }
+
+    const death_valid = () =>{
+        if(String(props.data?.deaths) === 'undefined'){
+            return "Select State";
+        }
+        return String(props.data?.confirmedCasesIndian - props.data?.deaths - props.data?.discharged);
+    }
+
     return (
         <>
             <div className="btn-group my-3" style={{width: '400px'}}>
@@ -67,7 +89,8 @@ const Dropdown = (props)=> {
                 <div className="card-body">
                     <h5 className="card-title text-info">Total Cases</h5>
                     <p className="card-text">
-                        { String(props.data?.confirmedCasesIndian) }
+                        {/* { String(props.data?.confirmedCasesIndian) } */}
+                        {case_valid()}
                     </p>
                 </div>
             </div>
@@ -79,7 +102,8 @@ const Dropdown = (props)=> {
                 <div className="card-body">
                     <h5 className="card-title text-warning">Active Cases</h5>
                     <p className="card-text">
-                        { String(props.data?.confirmedCasesIndian - props.data?.deaths - props.data?.discharged) }
+                        {/* { String(props.data?.confirmedCasesIndian - props.data?.deaths - props.data?.discharged) } */}
+                        {activecase_valid()}
                     </p>
                 </div>
             </div>
@@ -92,7 +116,8 @@ const Dropdown = (props)=> {
                     <h5 className="card-title text-danger">Total Deaths</h5>
                     <p className="card-text">
                         {/* { String(props.data[1]) } */}
-                        {props.data?.deaths}
+                        {/* {String(props.data?.deaths)} */}
+                        {death_valid()}
                         {/* {console.log(props.data.deaths)} */}
                     </p>
                 </div>
@@ -107,4 +132,14 @@ const Dropdown = (props)=> {
     )
 }
 
+// Dropdown.defaultProps ={
+//     data : {
+//         deaths : "Enter State",
+//         confirmedCasesIndian: "Enter State"
+//     }
+// }
+
+
+
 export default Dropdown
+
