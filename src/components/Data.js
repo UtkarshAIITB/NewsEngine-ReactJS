@@ -39,8 +39,8 @@ const Data = () =>{
         const url2 = 'https://api.rootnet.in/covid19-in/stats/history';
         let cdata2 = await fetch(url2);
         let parsedData = await cdata2.json();
-        setRegional2(parsedData.data[parseInt(parsedData.data.length)-2].regional);  //-3 returned date of 15.09 , latest being 19.09
-        setSummary2(parsedData.data[parseInt(parsedData.data.length)-2].summary);
+        setRegional2(parsedData.data[parseInt(parsedData.data.length)-1].regional);  //-3 returned date of 15.09 , latest being 19.09
+        setSummary2(parsedData.data[parseInt(parsedData.data.length)-1].summary);
         setDated(parsedData.data[parseInt(parsedData.data.length)-1].day);
     }
 
@@ -54,7 +54,6 @@ const Data = () =>{
         stateData();
         // eslint-disable-next-line
     }, [])
-
 
 
     return (
@@ -85,48 +84,48 @@ const Data = () =>{
 
                 {/* { regional.map((element)=>{
                     return  console.log(element.loc)
-                })} */}
+                })} */} 
         <Router>
           <Switch>
                           <Route exact path="/coviddashboard"><Dropdown key="general" category="general" name="Choose State" data={""} deaths ={summary.deaths} cases={summary.total} discharged={summary.discharged} ></Dropdown> </Route>
                             <Route exact path="/andamanandnicobarislands"> <Dropdown key="andamanandnicobarislands" category="andamanandnicobarislands" name="Andaman and Nicobar Islands" 
-                             data = {regional[0]}/> </Route>
-                            <Route exact path="/andhrapradesh"><Dropdown key="andhrapradesh" category="andhrapradesh" name="Andhra Pradesh" data = {regional[1]} >
+                             data = {regional[0]} data_prev = {regional2[0]} /> </Route>
+                            <Route exact path="/andhrapradesh"><Dropdown key="andhrapradesh" category="andhrapradesh" name="Andhra Pradesh" data = {regional[1]} data_prev = {regional2[1]}>
                                 </Dropdown> </Route>
-                            <Route exact path="/arunachalpradesh"><Dropdown key="arunachalpradesh" category="arunachalpradesh" name="Arunachal Pradesh" data = {regional[2]} ></Dropdown> </Route>
-                            <Route exact path="/assam"><Dropdown key="assam" category="assam" name="Assam" data = {regional[3]}></Dropdown> </Route>
-                            <Route exact path="/bihar"><Dropdown key="bihar" category="bihar" name="Bihar" data = {regional[4]}></Dropdown> </Route>
-                            <Route exact path="/chandigarh"><Dropdown key="chandigarh" category="chandigarh" name="Chandigarh" data = {regional[5]} ></Dropdown> </Route>
-                            <Route exact path="/chhattisgarh"><Dropdown key="chhattisgarh" category="chhattisgarh" name="Chhattisgarh" data = {regional[6]}></Dropdown> </Route>
-                            <Route exact path="/dadraandnagarhavelianddamananddiu"><Dropdown key="dadraandnagarhavelianddamananddiu" category="dadraandnagarhavelianddamananddiu" name="Dadra and Nagar Haveli and Daman and Diu" data = {regional[7]} ></Dropdown> </Route>
-                            <Route exact path="/delhi"><Dropdown key="delhi" category="delhi" name="Delhi" data = {regional[8]}></Dropdown> </Route>
-                            <Route exact path="/goa"><Dropdown key="goa" category="goa" name="Goa" data = {regional[9]}></Dropdown> </Route>
-                            <Route exact path="/gujarat"><Dropdown key="gujarat" category="gujarat" name="Gujarat" data = {regional[10]}></Dropdown> </Route>
-                            <Route exact path="/haryana"><Dropdown key="haryana" category="haryana" name="Haryana" data = {regional[11]}></Dropdown> </Route>
-                            <Route exact path="/himachalpradesh"><Dropdown key="himachalpradesh" category="himachalpradesh" name="Himachal Pradesh" data = {regional[12]}></Dropdown> </Route>
-                            <Route exact path="/jammuandkashmir"><Dropdown key="jammuandkashmir" category="jammuandkashmir" name="Jammu and Kashmir" data = {regional[13]}></Dropdown> </Route>
-                            <Route exact path="/jharkhand"><Dropdown key="jharkhand" category="jharkhand" name="Jharkhand" data = {regional[14]}></Dropdown> </Route>
-                            <Route exact path="/karnataka"><Dropdown key="karnataka" category="karnataka" name="Karnataka" data = {regional[15]}></Dropdown> </Route>
-                            <Route exact path="/kerala"><Dropdown key="kerala" category="kerala" name="Kerala" data = {regional[16]}></Dropdown> </Route>
-                            <Route exact path="/ladakh"><Dropdown key="ladakh" category="ladakh" name="Ladakh" data = {regional[17]}></Dropdown> </Route>
-                            <Route exact path="/lakshadweep"><Dropdown key="lakshadweep" category="lakshadweep" name="Lakshadweep" data = {regional[18]} ></Dropdown> </Route>
-                            <Route exact path="/madhyapradesh"><Dropdown key="madhyapradesh" category="madhyapradesh" name="Madhya Pradesh" data = {regional[19]}></Dropdown> </Route>
-                            <Route exact path="/maharashtra"><Dropdown key="maharashtra" category="maharashtra" name="Maharashtra" data = {regional[20]}></Dropdown> </Route>
-                            <Route exact path="/manipur"><Dropdown key="manipur" category="manipur" name="Manipur" data = {regional[21]}></Dropdown> </Route>
-                            <Route exact path="/meghalaya"><Dropdown key="meghalaya" category="meghalaya" name="Meghalaya" data = {regional[22]}></Dropdown> </Route>
-                            <Route exact path="/mizoram"><Dropdown key="mizoram" category="mizoram" name="Mizoram" data = {regional[23]}></Dropdown> </Route>
-                            <Route exact path="/nagaland"><Dropdown key="nagaland" category="nagaland" name="Nagaland"  data = {regional[24]}></Dropdown> </Route>
-                            <Route exact path="/odisha"><Dropdown key="odisha" category="odisha" name="Odisha"  data = {regional[25]}></Dropdown> </Route>
-                            <Route exact path="/puducherry"><Dropdown key="puducherry" category="puducherry" name="Puducherry"  data = {regional[26]}></Dropdown> </Route>
-                            <Route exact path="/punjab"><Dropdown key="punjab" category="punjab" name="Punjab"  data = {regional[27]}></Dropdown> </Route>
-                            <Route exact path="/rajasthan"><Dropdown key="rajasthan" category="rajasthan" name="Rajasthan"  data = {regional[28]}></Dropdown> </Route>
-                            <Route exact path="/sikkim"><Dropdown key="sikkim" category="sikkim" name="Sikkim"  data = {regional[29]}></Dropdown> </Route>
-                            <Route exact path="/tamilnadu"><Dropdown key="tamilnadu" category="tamilnadu" name="Tamil Nadu"  data = {regional[30]}></Dropdown> </Route>
-                            <Route exact path="/telangana"><Dropdown key="telangana" category="telangana" name="Telangana"  data = {regional[31]}></Dropdown> </Route>
-                            <Route exact path="/tripura"><Dropdown key="tripura" category="tripura" name="Tripura"  data = {regional[32]}></Dropdown> </Route>
-                            <Route exact path="/uttarakhand"><Dropdown key="uttarakhand" category="uttarakhand" name="Uttarakhand"  data = {regional[33]}></Dropdown> </Route>
-                            <Route exact path="/uttarpradesh"><Dropdown key="uttarpradesh" category="uttarpradesh" name="Uttar Pradesh"  data = {regional[34]}></Dropdown> </Route>
-                            <Route exact path="/westbengal"><Dropdown key="westbengal" category="westbengal" name="West Bengal"  data = {regional[35]}></Dropdown> </Route>
+                            <Route exact path="/arunachalpradesh"><Dropdown key="arunachalpradesh" category="arunachalpradesh" name="Arunachal Pradesh" data = {regional[2]} data_prev = {regional2[2]}  ></Dropdown> </Route>
+                            <Route exact path="/assam"><Dropdown key="assam" category="assam" name="Assam" data = {regional[3]} data_prev = {regional2[3]} ></Dropdown> </Route>
+                            <Route exact path="/bihar"><Dropdown key="bihar" category="bihar" name="Bihar" data = {regional[4]} data_prev = {regional2[4]} ></Dropdown> </Route>
+                            <Route exact path="/chandigarh"><Dropdown key="chandigarh" category="chandigarh" name="Chandigarh" data = {regional[5]} data_prev = {regional2[5]} ></Dropdown> </Route>
+                            <Route exact path="/chhattisgarh"><Dropdown key="chhattisgarh" category="chhattisgarh" name="Chhattisgarh" data = {regional[6]} data_prev = {regional2[6]} ></Dropdown> </Route>
+                            <Route exact path="/dadraandnagarhavelianddamananddiu"><Dropdown key="dadraandnagarhavelianddamananddiu" category="dadraandnagarhavelianddamananddiu" name="Dadra and Nagar Haveli and Daman and Diu" data = {regional[7]} data_prev = {regional2[7]} ></Dropdown> </Route>
+                            <Route exact path="/delhi"><Dropdown key="delhi" category="delhi" name="Delhi" data = {regional[8]} data_prev = {regional2[8]} ></Dropdown> </Route>
+                            <Route exact path="/goa"><Dropdown key="goa" category="goa" name="Goa" data = {regional[9]} data_prev = {regional2[9]} ></Dropdown> </Route>
+                            <Route exact path="/gujarat"><Dropdown key="gujarat" category="gujarat" name="Gujarat" data = {regional[10]} data_prev = {regional2[10]} ></Dropdown> </Route>
+                            <Route exact path="/haryana"><Dropdown key="haryana" category="haryana" name="Haryana" data = {regional[11]} data_prev = {regional2[11]} ></Dropdown> </Route>
+                            <Route exact path="/himachalpradesh"><Dropdown key="himachalpradesh" category="himachalpradesh" name="Himachal Pradesh" data = {regional[12]} data_prev = {regional2[12]} ></Dropdown> </Route>
+                            <Route exact path="/jammuandkashmir"><Dropdown key="jammuandkashmir" category="jammuandkashmir" name="Jammu and Kashmir" data = {regional[13]} data_prev = {regional2[13]} ></Dropdown> </Route>
+                            <Route exact path="/jharkhand"><Dropdown key="jharkhand" category="jharkhand" name="Jharkhand" data = {regional[14]} data_prev = {regional2[14]} ></Dropdown> </Route>
+                            <Route exact path="/karnataka"><Dropdown key="karnataka" category="karnataka" name="Karnataka" data = {regional[15]} data_prev = {regional2[15]} ></Dropdown> </Route>
+                            <Route exact path="/kerala"><Dropdown key="kerala" category="kerala" name="Kerala" data = {regional[16]} data_prev = {regional2[16]} ></Dropdown> </Route>
+                            <Route exact path="/ladakh"><Dropdown key="ladakh" category="ladakh" name="Ladakh" data = {regional[17]} data_prev = {regional2[17]} ></Dropdown> </Route>
+                            <Route exact path="/lakshadweep"><Dropdown key="lakshadweep" category="lakshadweep" name="Lakshadweep" data = {regional[18]} data_prev = {regional2[18]} ></Dropdown> </Route>
+                            <Route exact path="/madhyapradesh"><Dropdown key="madhyapradesh" category="madhyapradesh" name="Madhya Pradesh" data = {regional[19]} data_prev = {regional2[19]} ></Dropdown> </Route>
+                            <Route exact path="/maharashtra"><Dropdown key="maharashtra" category="maharashtra" name="Maharashtra" data = {regional[20]} data_prev = {regional2[20]} ></Dropdown> </Route>
+                            <Route exact path="/manipur"><Dropdown key="manipur" category="manipur" name="Manipur" data = {regional[21]} data_prev = {regional2[21]} ></Dropdown> </Route>
+                            <Route exact path="/meghalaya"><Dropdown key="meghalaya" category="meghalaya" name="Meghalaya" data = {regional[22]} data_prev = {regional[22]} ></Dropdown> </Route>
+                            <Route exact path="/mizoram"><Dropdown key="mizoram" category="mizoram" name="Mizoram" data = {regional[23]} data_prev = {regional2[23]} ></Dropdown> </Route>
+                            <Route exact path="/nagaland"><Dropdown key="nagaland" category="nagaland" name="Nagaland"  data = {regional[24]} data_prev = {regional2[24]} ></Dropdown> </Route>
+                            <Route exact path="/odisha"><Dropdown key="odisha" category="odisha" name="Odisha"  data = {regional[25]} data_prev = {regional2[25]} ></Dropdown> </Route>
+                            <Route exact path="/puducherry"><Dropdown key="puducherry" category="puducherry" name="Puducherry"  data = {regional[26]} data_prev = {regional2[26]} ></Dropdown> </Route>
+                            <Route exact path="/punjab"><Dropdown key="punjab" category="punjab" name="Punjab"  data = {regional[27]} data_prev = {regional2[27]} ></Dropdown> </Route>
+                            <Route exact path="/rajasthan"><Dropdown key="rajasthan" category="rajasthan" name="Rajasthan"  data = {regional[28]} data_prev = {regional2[28]} ></Dropdown> </Route>
+                            <Route exact path="/sikkim"><Dropdown key="sikkim" category="sikkim" name="Sikkim"  data = {regional[29]} data_prev = {regional2[29]} ></Dropdown> </Route>
+                            <Route exact path="/tamilnadu"><Dropdown key="tamilnadu" category="tamilnadu" name="Tamil Nadu"  data = {regional[30]} data_prev = {regional2[30]} ></Dropdown> </Route>
+                            <Route exact path="/telangana"><Dropdown key="telangana" category="telangana" name="Telangana"  data = {regional[31]} data_prev = {regional2[31]} > </Dropdown> </Route>
+                            <Route exact path="/tripura"><Dropdown key="tripura" category="tripura" name="Tripura"  data = {regional[32]} data_prev = {regional2[32]} ></Dropdown> </Route>
+                            <Route exact path="/uttarakhand"><Dropdown key="uttarakhand" category="uttarakhand" name="Uttarakhand"  data = {regional[33]} data_prev = {regional2[33]} ></Dropdown> </Route>
+                            <Route exact path="/uttarpradesh"><Dropdown key="uttarpradesh" category="uttarpradesh" name="Uttar Pradesh"  data = {regional[34]} data_prev = {regional2[34]} ></Dropdown> </Route>
+                            <Route exact path="/westbengal"><Dropdown key="westbengal" category="westbengal" name="West Bengal"  data = {regional[35]} data_prev = {regional2[35]} ></Dropdown> </Route>
           </Switch>
         </Router>
            
