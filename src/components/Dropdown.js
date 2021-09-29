@@ -41,10 +41,10 @@ const Dropdown = (props)=> {
     }
 
     const changetoday_valid = () =>{
-        if(String(props.data?.confirmedCasesIndian - props.data?.discharged - props.data?.deaths - ( props.data_prev?.confirmedCasesIndian - props.data_prev?.discharged - props.data_prev?.deaths) ) === 'NaN'){
+        if(String(props.data?.confirmedCasesIndian  - ( props.data_prev?.confirmedCasesIndian) ) === 'NaN'){
             return "Select State";
         }
-        return String(props.data?.confirmedCasesIndian - props.data?.discharged - props.data?.deaths - ( props.data_prev?.confirmedCasesIndian - props.data_prev?.discharged - props.data_prev?.deaths))
+        return String(props.data?.confirmedCasesIndian  - ( props.data_prev?.confirmedCasesIndian ))
 
     }
 

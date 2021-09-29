@@ -1,9 +1,12 @@
 import React from 'react'
 
 const Cards = (props)=> {
+
+  console.log(props.cases);
+  console.log(props.cases_prev);
     return (
         <>
-        <div className="card mx-3 my-3" style={{
+        <div className="card mx-3 my-5" style={{
             width: '250px',
             flexDirection: 'row'
         }}>
@@ -70,7 +73,8 @@ const Cards = (props)=> {
           <div className="card-body">
             <h5 className="card-title text-dark">Change Today</h5>
             <p className="card-text">
-              { String(String(props.cases - props.discharged - props.deaths - (props.cases_prev - props.discharged_prev - props.deaths_prev))) }
+              {/* { String(String(props.cases - props.discharged - props.deaths - (props.cases_prev - props.discharged_prev - props.deaths_prev))) } */}
+              { (String(props.cases - props.cases_prev)) }
             </p>
           </div>
         </div>

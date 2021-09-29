@@ -9,7 +9,8 @@ const NewsItem = (props)=> {
                         display: 'flex',
                         justifyContent: 'flex-end',
                         position: 'absolute',
-                        right: '0'
+                        right: '0',
+                        backgroundColor : '#e1dce1' 
                     }
                     }> 
                         <span className="badge rounded-pill bg-danger"> {source} </span>
